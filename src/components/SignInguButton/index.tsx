@@ -1,6 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
-import { signIn, signout, useSession } from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 import styles from "./styles.module.scss";
 
@@ -14,7 +14,7 @@ export function SignInguButton() {
       <FiX
         color="#737380"
         className={styles.closeButton}
-        onClick={() => signout()}
+        onClick={() => signOut()}
       />
     </button>
   ) : (
