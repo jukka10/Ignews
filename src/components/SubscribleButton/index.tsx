@@ -1,4 +1,3 @@
-import { Session } from "next-auth";
 import { signIn, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 
@@ -10,23 +9,17 @@ interface ButtonProps {
   priceId: string;
 }
 
-interface SessionPostProps extends Session {
-  activeSubscription: object;
-}
-
 export function SubscriblButton({ priceId }: ButtonProps) {
   const [session] = useSession();
   const router = useRouter();
 
   async function handleSubscrible() {
-    const { activeSubscription } = session as SessionPostProps;
-
     if (!session) {
       signIn("github");
       return;
     }
 
-    if (activeSubscription) {
+    if (session.activeSubscription) {
       router.push("/posts");
       return;
     }
